@@ -95,3 +95,15 @@ function findMernDev() {
     return mern;
 }
 console.log(findMernDev());
+
+// Set your name in the users object without modifying the original users object
+const setYourName = Object.assign({ AdStar: { email: 'trananhduc23102000@gmail.com' } }, users);
+console.log(setYourName);
+
+// Get all keys or properties of users object
+const getAllKeys = Object.keys(users.Paul);
+console.log(getAllKeys);
+
+// Get all the values of users object
+const getAllValues = Object.values(users.Paul);
+console.log(getAllValues);
