@@ -98,3 +98,91 @@ console.log(findNorwayCountry);
 // Use findIndex to find the position of Russia if it doesn't exist in the array you will get -1.
 const findRussiaCountry = countries.findIndex(country => country === 'Russia');
 console.log(findRussiaCountry);
+
+// Find the total price of products by chaining two or more array iterators(eg. arr.map(callback).filter(callback).reduce(callback))
+const findProductPrice = products.map(product => product.price);
+console.log(findProductPrice);
+
+const checkPrice = findProductPrice.filter(price => typeof(price) === 'number');
+console.log(checkPrice);
+
+const totalPrice = checkPrice.reduce((sum, price) => sum + price);
+console.log(totalPrice);
+
+// Find the sum of price of products using only reduce reduce(callback))
+const sumPrice = elements => {
+    //
+    let initialValue = 0;
+    //
+    const sum = elements.reduce((acc, cur) => {
+        //
+        // whitespace does not allowed for add like numbers
+        const regex = /^\S+$/;
+
+        // return true or false
+        const isSpace = regex.test(cur.price);
+
+        // check it if the price is a number
+        // return true or false
+        const isNumber = Number.isInteger(cur.price);
+
+        // DONT SPACE, not null not undefined or string
+        if (isSpace && cur.price && isNumber) {
+            return acc + cur.price;
+        }
+        return acc;
+        //
+        // if the product is an array of objects and it must supply an initialValue here
+    }, initialValue);
+
+    console.log(`Total price of products: ${sum}`);
+};
+sumPrice(products);
+console.log("~~~~~~~~~~~~~~~");
+
+const categorizeCountries = (countries, wordShort) => {
+    // undefined null
+    if (!wordShort) {
+        return false;
+    }
+    console.log(`Match => ${wordShort}`);
+    // Matches a word
+    const countryLan = countries.filter(elem => {
+        // length to match last word
+        const wordLen = wordShort.length;
+
+        // length of a country
+        const elemLen = elem.length;
+
+        const match = elem.slice(elemLen - wordLen, elemLen);
+
+        // all lower case: "AbC" => "abc"
+        if (match.toLowerCase() === wordShort.toLowerCase()) {
+            return elem;
+        }
+    });
+    //	const countryLan = countries.filter(elem => elem.includes(wordShort));
+
+    console.log(countryLan);
+};
+categorizeCountries(countries, "land");
+categorizeCountries(countries, "ia");
+categorizeCountries(countries, "stan");
+categorizeCountries(countries, null);
+
+console.log("~~~~~~~~~~~~~~~");
+
+// Declare a getFirstTenCountries function and return an array of ten countries. Use different functional programming to work on the countries.js array
+const getFirstTenCountries = countries => {
+    const country = [];
+    const tencountries = countries.forEach((elem, index) => {
+        if (index < 10) {
+            country.push(elem);
+        }
+    });
+    console.log("first ten countries");
+    console.log(country);
+};
+
+getFirstTenCountries(countries);
+console.log("~~~~~~~~~~~~~~~");
