@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>JS Day 21: Exercises</h1>
+
+    <code>
+        Open the console to see my exercises solutions. <br />
+        Uncomment exercises to play with them.
+    </code>
+
+    <p id="firstP">a</p>
+    <p id="secondP">b</p>
+    <p id="thirdP">c</p>
+    <p id="fourthP">d</p>
+
+    <script>
+        // <!-- Get the first paragraph by using document.querySelector(tagname) and tag name -->
+        const firstParagraph = document.querySelector('h1');
+        console.log(firstParagraph);
+
+        // Get get each of the the paragraph using document.querySelector('#id') and by their id
+        const SecondParagraph = document.querySelector('#firstP');
+        console.log(SecondParagraph);
+
+        // Get all the p as nodeList using document.querySelectorAll(tagname) and by their tag name
+        const allP = document.querySelectorAll('p');
+        console.log(allP);
+
+        // Loop through the nodeList and get the text content of each paragraph
+        allP.forEach(p => console.log(p.innerText));
+
+        // Set a text content to paragraph the fourth paragraph,Fourth Paragraph
+        let fourthPById = document.querySelector('#fourthP');
+        fourthPById.textContent = 'Fourth Paragraph';
+        console.log(fourthPById);
+
+        // Select all paragraphs and loop through each elements and give the first and third paragraph a color of green, and the second and the fourth paragraph a red color
+        let paragraphs = document.querySelectorAll('p');
+            paragraphs.forEach((p, i) => {
+            // i is the index, even index is an odd paragraph and viceversa
+
+	        if (i % 2 === 0) {
+		        p.style.color = 'green';
+	        } else {
+		        p.style.color = 'red';
+	        }
+        });
+    </script>
+</body>
+</html>
